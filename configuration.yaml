@@ -1,0 +1,26 @@
+dataset:
+  root_path: "./spider/save_img" # 数据集根目录
+  train_ratio: 0.8 # 训练集的比例
+  train_batch_size: 128 # 训练批次大小
+  test_batch_size: 32 # 测试批次大小
+
+model:
+  type: ResNet18 # 模型类型，可以是 GoCNN 或 ResNet18
+  save_root: "./save_root" # 模型保存根目录
+
+training:
+  learning_rate: 0.0001 # 学习率
+  num_epochs: 600 # 训练周期数
+  loss_function: MSELoss # 损失函数
+
+device:
+  type: "cuda" # 设备类型，可以是 "cuda" 或 "cpu"
+
+logging:
+  print_interval: 1 # 日志打印间隔（以周期为单位）
+  save_interval: 5 # 模型保存间隔（以周期为单位）
+
+scheduler:  # 调度器配置
+  type: CosineAnnealingLR # 调度器类型，这里使用余弦退火学习率调度器
+  T_max: 10 # 调度器的最大周期数
+  eta_min: 0.0001 # 调度器的最小学习率
